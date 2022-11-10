@@ -1,0 +1,408 @@
+Primjer 1. Napisi program koji ce ucitati matricu dimenzija nxm (n, m <=10), ispisati
+je u obliku tabele te naci I ispisati sumu elemenata drugog reda I proizvod
+elemenata trece kolone. Elementi niza su cijeli brojevi, najmanji broj kolone je 3,
+najmanji broj redova je 2.
+• #include <iostream>
+• #include <stdlib.h>
+• #include <iomanip>
+• using namespace std;
+• int main ()
+• {
+• int X[10][10];
+• int i, j, N, M, suma2=0, proizvod3=1;
+• cout<<"unesite dimenzije niza ( min 2x3, max 10x10)"<<endl;
+• do
+• {
+• cout<<"broj redova N=";
+• cin>>N;
+• cout<<"broj kolona M=";
+• cin>>M;
+• }
+• while (((N<2)||(N>10))||((M<3)||(M>10))); 
+for (i=0; i<N; i++)
+• {
+• cout<<"Unesite elemente "<<i<<" reda"<<endl;
+• for (j=0; j<M; j++)
+• {
+• cout<<"X["<< i<<", "<<j<<"] = ";
+• cin>>X[i][j];
+• }
+• }
+• cout<<"Niz je ucitan"<<endl;
+• cout<<"Upisali ste niz"<<endl;
+• for (i=0; i<N; i++)
+• {
+• for (j=0; j<M; j++)
+• {
+• cout<<setw(6)<<left<<X[i][j];
+• }
+• cout<<endl;
+• } 
+//izracunavanje sume drugog reda
+• for (j=0; j<M; j++)
+• {
+• suma2 += X[1][j];
+• }
+• //izracunavanje proizvoda trece kolone
+• for (i=0; i<N; i++)
+• {
+• proizvod3 *= X[i][2];
+• }
+• cout<<endl<<"suma elemenata drugog reda je "<<suma2<<endl;
+• cout<<endl<<"Proizvod elemenata trece kolone je
+"<<proizvod3<<endl;
+• return 0;
+• } 
+
+Primjer 2. Napisi program koji ce ucitati matricu dimenzija nxm (n,m <= 10), I
+realni broj x, te naci proizvod matrice broja x. Novodobivenu matricu treab
+ispisati u obliku tabele.
+• #include <iostream>
+• #include <iomanip>
+• #include <stdlib.h>
+• using namespace std;
+• main ()
+• {
+• float X[10][10];
+• int i, j, M, N, brojX;
+• //ucitavanje niza
+• cout<<"Upisite dimenzije niza (max 10 reda i 10 kolone)"<<endl;
+• do
+• {
+• cout<<"broje redova N= ";
+• cin>>N;
+• cout<<"broj kolona M= ";
+• cin>>M;
+• } 
+•while ((N>10)|| (M>10));
+•for (i=0; i<N; i++)
+•{
+•cout<<"Unesite elemente "<<i<<" reda"<<endl;
+•for (j=0; j<M; j++)
+•{
+•cout<<"X["<< i<<", "<<j<<"] = ";
+•cin>>X[i][j];
+•}
+•}
+•cout<<"Niz je ucitan"<<endl;
+•cout<<"Upisali ste niz"<<endl;
+•for (i=0; i<N; i++)
+•{
+•for (j=0; j<M; j++)
+•{
+•cout<<setw(6)<<left<<X[i][j];
+•}
+•cout<<endl;
+•}
+•cout<<endl<<"Unesite brojX = ";
+•cin>>brojX;
+•//ispis skalarnog proizvoda
+•cout<<endl<<"Skalarni proizvod je "<<brojX<<
+"* brojX je"<<endl;
+•for (i=0; i<N; i++)
+•{
+•for (j=0; j<M; j++)
+•{
+•cout<<setw(6)<<brojX * X[i][j];
+•}
+•cout<<endl;
+•}
+•return 0;
+•}
+
+Primjer 3 – Ucitati dva dvodimenzionalna niza sa maksimalno 10x10 elemenata I
+formirajte I ispisite matricu koja predstavlja zbir ucitanih matrica.
+• #include <iostream>
+• #include <iomanip>
+• #include <stdlib.h>
+• using namespace std;
+• main ()
+• {
+• float X[10][10], Y[10][10], Z[10][10];
+• int i, j, M, N;
+• //ucitavanje niza X
+• cout<<"Upisite dimenzije 2D niza X(max 10 reda i 10 kolone)"<<endl;
+• do
+• {
+• cout<<"broje redova N= ";
+• cin>>N;
+• cout<<"broj kolona M= ";
+• cin>>M;
+• }
+• while ((N>10)|| (M>10)); 
+for (i=0; i<N; i++)
+• {
+• cout<<"Unesite elemente "<<i<<" reda"<<endl;
+• for (j=0; j<M; j++)
+• {
+• cout<<"X["<< i<<", "<<j<<"] = ";
+• cin>>X[i][j];
+• }
+• }
+• cout<<"2D niz X je ucitan"<<endl;
+• //ucitavanje niza Y
+• cout<<"Upisite dimenzije 2D niza Y(max 10 reda i 10 kolone)"<<endl;
+• do
+• {
+• cout<<"broje redova N= ";
+• cin>>N;
+• cout<<"broj kolona M= ";
+• cin>>M;
+• } 
+while ((N>10)|| (M>10));
+• for (i=0; i<N; i++)
+• {
+• cout<<"Unesite elemente "<<i<<" reda"<<endl;
+• for (j=0; j<M; j++)
+• {
+• cout<<"Y["<< i<<", "<<j<<"] = ";
+• cin>>Y[i][j];
+• }
+• }
+• cout<<"2D niz Y je ucitan"<<endl;
+• cout<<"Elementi 2D niza X:"<<endl;
+• for (i=0; i<N; i++)
+• {
+• for (j=0; j<M; j++)
+• {
+• cout<<setw(6)<<left<<X[i][j];
+• }
+• cout<<endl;
+• }
+cout<<"Elementi 2D niza Y:"<<endl;
+• for (i=0; i<N; i++)
+• {
+• for (j=0; j<M; j++)
+• {cout<<setw(6)<<left<<Y[i][j];
+• }
+• cout<<endl;
+• }
+• //formiranje novog 2D niza Z=X+Y
+• for (i=0; i<N; i++)
+• for (j=0; j<M; j++)
+• Z[i][j]=X[i][j] + Y[i][j];
+• //ispis 2D niza Z
+• cout<<"Zbir ucitanih 2D nizova je "<<endl;
+• for (i=0; i<N; i++)
+• {
+• for (j=0; j<M; j++)
+• {cout<<setw(6)<<Z[i][j];
+• }
+• cout<<endl;
+• }
+• return 0;
+
+Primjer 4 – Napisati program koji ucitava matricu X formata nxk, i matricu Y
+formata kxm, te izracunava I ispisuje matricu Z koja je proizvod matrica X i Y. 
+#include <iostream>
+• #include <iomanip>
+• #include <stdlib.h>
+• using namespace std;
+• main ()
+• {
+• float X[10][10], Y[10][10], Z[10][10];
+• int i, j, l, k, M, N;
+• //ucitavanje niza X
+• cout<<"Upisite dimenzije 2D niza X(max 10 reda i 10 kolone)"<<endl;
+• do
+• {
+• cout<<"broje redova N= ";
+• cin>>N;
+• cout<<"broj kolona M= ";
+• cin>>M;
+• } 
+while ((N>10)|| (M>10));
+• for (i=0; i<N; i++)
+• {
+• cout<<"Unesite elemente "<<i<<" reda"<<endl;
+• for (j=0; j<M; j++)
+• {
+• cout<<"X["<< i<<", "<<j<<"] = ";
+• cin>>X[i][j];
+• }
+• }
+• cout<<"2D niz X je ucitan"<<endl;
+• //ucitavanje niza Y
+• cout<<"Upisite dimenzije 2D niza Y(max 10 reda i 10 kolone)"<<endl;
+• do
+• {
+• cout<<"broje redova N= ";
+• cin>>N;
+• cout<<"broj kolona M= ";
+• cin>>M;
+• } 
+while ((N>10)|| (M>10));
+• for (i=0; i<N; i++)
+• {
+• cout<<"Unesite elemente "<<i<<" reda"<<endl;
+• for (j=0; j<M; j++)
+• {
+• cout<<"Y["<< i<<", "<<j<<"] = ";
+• cin>>Y[i][j];
+• }
+• }
+• cout<<"2D niz Y je ucitan"<<endl;
+//ispis nizova
+• cout<<"Elementi 2D niza X:"<<endl;
+• for (i=0; i<N; i++)
+• {
+• for (j=0; j<M; j++)
+• {
+• cout<<setw(6)<<left<<X[i][j];
+• }
+• cout<<endl;
+• }
+cout<<"Elementi 2D niza Y:"<<endl;
+• for (i=0; i<N; i++)
+• {
+• for (j=0; j<M; j++)
+• {
+• cout<<setw(8)<<left<<Y[i][j];
+• }
+• cout<<endl;
+• }
+• //formiranje novog 2D niza Z=X*Y
+• for (i=0; i<N; i++)
+• for (j=0; j<M; j++)
+• {
+• Z[i][j]=0;
+• for (l=0; l<k; l++)
+• Z[i][j]= Z[i][j]+X[i][l]*Y[l][j];
+• }
+//ispis 2D niza Z
+• cout<<"Proizvod ucitanih 2D nizova je "<<endl;
+• for (i=0; i<N; i++)
+• {
+• for (j=0; j<M; j++)
+• {
+• cout<<setw(8)<<Z[i][j];
+• }
+• cout<<endl;
+• }
+• return 0;
+• }
+
+Primjer 6 – Ucitati kvadratnu matricu I ispisati elemente na glavnoj I elemente na
+sporednoj dijagonali.
+• Kvadratna matrica ima jednak broj redova I
+kolona, te oba brojaca imaju isti opseg.
+• Za elemente na glavnoj dijagonali vrijedi da je
+i=j , tj.na glavnoj dijagonali su elementi koji
+imaju isti indeks reda I kolone
+• sporedna dijagonala sadrzi elemente kod kojih
+je indeks kolone odredjen kao N-i-1
+
+1. Kreirajte program za mnozenje matrice dimenzija 3x5 i matrice dimenzija 5x2.
+• #include <cstdlib>
+• #include <iostream>
+• using namespace std;
+• int main()
+• {int a[3][5]={1,1,1,1,1,
+• 2,2,2,2,2,
+• 3,3,3,3,3,},
+• b[5][2]={1,1,
+• 2,2,
+• 3,3,
+• 4,4,
+• 5,5,},
+• p[3][2]={0};
+• for (int i=0; i<3; i++)
+• {for (int j=0; j<2; j++)
+• {for (int k=0; k<5; k++)
+• p[i][j]=p[i][j]+a[i][k]*b[k][j];
+• cout << p[i][j] << " ";
+• }
+• cout << endl;
+• }
+• return 0;
+• }
+
+2. Naci sumu elemenata glavne dijagonale i proizvod parnih elemenata iznad
+sporedne dijagonale 2d niza 5x5 cijelih brojeva.
+• #include <cstdlib>
+• #include <iostream>
+• using namespace std;
+• int main()
+• {int a[5][5]={1,1,1,1,9,
+• 2,2,2,2,2,
+• 3,3,3,3,3,
+• 4,3,4,4,4,
+• 3,5,5,5,5}, sumag=0, ppiznads=1;
+• for (int i=0; i<5;i++)
+• {sumag=sumag+a[i][i];
+• }
+• for (int i=0; i<4; i++)
+• for (int j=0; j<4-i; j++)
+• if (a[i][j]%2==0) ppiznads=ppiznads*a[i][j];
+• cout << "Suma el. glavne dijagonale " << sumag << endl;
+• cout << "Proizvod parnih el. iznad spor. dijagonale " << ppiznads << endl;
+• system("PAUSE");
+• return EXIT_SUCCESS;
+• }
+
+3. Kreirati program koji ce omoguciti ucitavanje i ispis niza dimenzija max 8x10 uz
+upotrebu manipulatora setw.
+• #include <iostream>
+• #include <iomanip>
+• #include <stdlib.h>
+• using namespace std;
+• main ()
+• {
+• float X[8][10];
+• int i, j, M, N;
+• //ucitavanje niza
+• cout<<"Upisite dimenzije niza (max 8
+reda i 10 kolone)"<<endl;
+• do
+• {
+• cout<<"broje redova = ";
+• cin>>N;
+• cout<<"broj kolona = ";
+• cin>>M;
+• }
+• while ((N>8)|| (M>10));
+•for (i=0; i<N; i++)
+•{
+•cout<<"Unesite elemente "<<i<<"
+reda"<<endl;
+•for (j=0; j<M; j++)
+•{
+•cout<<"X["<< i<<", "<<j<<"] = ";
+•cin>>X[i][j];
+•}
+•}
+•cout<<"Niz je ucitan"<<endl;
+•cout<<"Upisali ste niz"<<endl;
+•for (i=0; i<N; i++)
+•{
+•for (j=0; j<M; j++)
+•{
+•cout<<setw(6)<<left<<X[i][j];
+•}
+•cout<<endl;
+•}
+•return 0;
+•}
+
+JUST PRINT
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int myarray[5][5];
+    int myarray1[2][2] = {1,2,3,4};
+    int myarray2[3][3] = {{1,1,1},{2,2,2},{3,3,3}};
+    
+    for(int i=0;i<3;i++)
+    {
+     for(int j=0; j<3; j++)
+     {
+        cout << myarray2[i][j] << " ";
+     }
+     cout << endl;
+    }
+    return 0;
+}

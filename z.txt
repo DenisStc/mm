@@ -406,3 +406,5 @@ int main()
     }
     return 0;
 }
+
+AKO HOCU UNOS cin >> myarray2[i][j];
